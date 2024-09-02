@@ -1,0 +1,10 @@
+---
+- name: Login to remote server
+  hosts: login
+  become: yes
+
+  tasks:
+  - name: Login to server
+    remote_user: cdac
+    auth:
+      password: cdac
