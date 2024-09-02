@@ -1,10 +1,16 @@
 ---
-- name: Login to remote server
+- name: Install and start HTTP service
   hosts: login
   become: yes
 
   tasks:
-  - name: Login to server
-    remote_user: cdac
-    auth:
-      password: cdac
+  - name: Install httpd package
+    yum:
+      name: httpd
+      state: present
+
+  - name: Start httpd service
+    service:
+      name: httpd
+      state: started
+      enabled: yes
